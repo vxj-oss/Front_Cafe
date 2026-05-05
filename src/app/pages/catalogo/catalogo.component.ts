@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core'; // ✅ Se agrega OnDestroy
+import { Component, inject, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core'; 
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Producto } from '../../models/producto.model';

@@ -47,3 +47,18 @@
   font-size: 0.75rem;
   margin-left: 6px;
 }
+.btn-logout {
+  background: none;
+  border: 1px solid #d7ccc8;
+  color: #d7ccc8;
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-logout:hover { background: #6d4c41; border-color: #6d4c41; }
+
+.usuario-label { color: #d7ccc8; font-size: 0.85rem; }
+
+.link-admin { color: #d7ccc8; font-size: 0.9rem; }

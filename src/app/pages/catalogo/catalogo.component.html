@@ -1,7 +1,6 @@
 <div class="catalogo-container">
   <h1 class="titulo">Nuestros Productos</h1>
 
-  <!-- Filtros por categoría -->
   <div class="filtros">
     <button
       class="filtro-btn"
@@ -20,12 +19,10 @@
     }
   </div>
 
-  <!-- Mensaje toast -->
   @if (mensaje) {
     <div class="toast">{{ mensaje }}</div>
   }
 
-  <!-- Grid de productos -->
   @if (productos.length > 0) {
     <div class="productos-grid">
       @for (producto of productos; track producto.id) {

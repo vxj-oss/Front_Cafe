@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Producto } from '../../models/producto.model';
@@ -17,14 +17,24 @@ export class DetalleProductoComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private productoService = inject(ProductoService);
   private carritoService = inject(CarritoService);
+  private cdr = inject(ChangeDetectorRef);
 
   producto: Producto | null = null;
   mensaje: string = '';
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.productoService.obtener(id).subscribe(data => {
-      this.producto = data;
+    console.log('ID recibido:', id);
+
+    this.productoService.obtener(id).subscribe({
+      next: (data) => {
+        console.log('Producto:', data);
+        this.producto = data;
+        this.cdr.detectChanges(); // 👈 SOLUCIÓN
+      },
+      error: (err) => {
+        console.error('Error:', err);
+      }
     });
   }
 
@@ -32,7 +42,12 @@ export class DetalleProductoComponent implements OnInit {
     if (this.producto) {
       this.carritoService.agregar(this.producto);
       this.mensaje = '✅ Producto agregado al carrito';
-      setTimeout(() => this.mensaje = '', 2500);
+      this.cdr.detectChanges();
+
+      setTimeout(() => {
+        this.mensaje = '';
+        this.cdr.detectChanges();
+      }, 2500);
     }
   }
 }

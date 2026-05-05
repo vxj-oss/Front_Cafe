@@ -2,14 +2,37 @@
   <a routerLink="/" class="navbar-brand">☕ Café de Barrio</a>
 
   <div class="navbar-links">
-    <a routerLink="/" routerLinkActive="active">Catálogo</a>
-    <a routerLink="/admin/productos">Lista de Productos</a>
-    <a routerLink="/admin/pedidos">Pedidos</a>
-    <a routerLink="/carrito" class="carrito-btn">
-      🛒 Carrito
-      @if (carritoService.cantidadTotal() > 0) {
-        <span class="badge">{{ carritoService.cantidadTotal() }}</span>
+    @if (!authService.isLoggedIn()) {
+      <a routerLink="/login" class="link-admin">BIENVENIDOS</a>
+    }
+    @if (authService.isLoggedIn()) {
+
+    @if (authService.isUser()) {
+      <a routerLink="/">Catálogo</a>
+    }
+      @if (authService.isAdmin()) {
+        <a routerLink="/admin/productos">Productos</a>
+        <a routerLink="/admin/pedidos">Pedidos</a>
       }
-    </a>
+
+      @if (authService.isUser()) {
+        <a routerLink="/carrito" class="carrito-btn">
+          🛒 Carrito
+          @if (carritoService.cantidadTotal() > 0) {
+            <span class="badge">
+              {{ carritoService.cantidadTotal() }}
+            </span>
+          }
+        </a>
+      }
+      <span class="usuario-label">
+        👤 {{ authService.usuario()?.username }}
+      </span>
+
+      <button class="btn-logout" (click)="authService.logout()">
+        Cerrar sesión
+      </button>
+    }
+
   </div>
 </nav>

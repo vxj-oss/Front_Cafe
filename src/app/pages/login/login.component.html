@@ -1,0 +1,108 @@
+<div class="login-container">
+  <div class="login-card">
+
+    <div class="login-logo">☕</div>
+    <h1>Café de Barrio</h1>
+    <div class="pestanas">
+      <button
+        class="pestana"
+        [class.activa]="pestanaActiva === 'cliente'"
+        (click)="cambiarPestana('cliente')">
+        👤 Cliente
+      </button>
+      <button
+        class="pestana"
+        [class.activa]="pestanaActiva === 'admin'"
+        (click)="cambiarPestana('admin')">
+        🔐 Administrador
+      </button>
+    </div>
+    @if (pestanaActiva === 'cliente') {
+
+      <div class="modo-switch">
+        <button
+          [class.activo]="modoCliente === 'login'"
+          (click)="cambiarModoCliente('login')">
+          Iniciar sesión
+        </button>
+        <button
+          [class.activo]="modoCliente === 'registro'"
+          (click)="cambiarModoCliente('registro')">
+          Registrarse
+        </button>
+      </div>
+
+      @if (exitoRegistro) {
+        <div class="exito-msg">{{ exitoRegistro }}</div>
+      }
+
+      <!-- Login cliente -->
+      @if (modoCliente === 'login') {
+        <form [formGroup]="formClienteLogin" (ngSubmit)="loginCliente()">
+          <div class="campo">
+            <label>Usuario</label>
+            <input type="text" formControlName="username" placeholder="Tu usuario" />
+          </div>
+          <div class="campo">
+            <label>Contraseña</label>
+            <input type="password" formControlName="password" placeholder="••••••••" />
+          </div>
+          @if (errorCliente) {
+            <div class="error-msg">{{ errorCliente }}</div>
+          }
+          <button type="submit" class="btn-login" [disabled]="formClienteLogin.invalid || cargando">
+            {{ cargando ? 'Ingresando...' : 'Ingresar' }}
+          </button>
+        </form>
+      }
+      @if (modoCliente === 'registro') {
+        <form [formGroup]="formClienteRegistro" (ngSubmit)="registrarCliente()">
+          <div class="campo">
+            <label>Usuario</label>
+            <input type="text" formControlName="username" placeholder="Elige un usuario" />
+            @if (formClienteRegistro.get('username')?.invalid && formClienteRegistro.get('username')?.touched) {
+              <span class="error-campo">Mínimo 3 caracteres</span>
+            }
+          </div>
+          <div class="campo">
+            <label>Contraseña</label>
+            <input type="password" formControlName="password" placeholder="Mínimo 4 caracteres" />
+          </div>
+          <div class="campo">
+            <label>Confirmar contraseña</label>
+            <input type="password" formControlName="confirmar" placeholder="Repite la contraseña" />
+          </div>
+          @if (errorCliente) {
+            <div class="error-msg">{{ errorCliente }}</div>
+          }
+          <button type="submit" class="btn-login" [disabled]="formClienteRegistro.invalid || cargando">
+            {{ cargando ? 'Registrando...' : 'Crear cuenta' }}
+          </button>
+        </form>
+      }
+    }
+
+    @if (pestanaActiva === 'admin') {
+      <p class="subtitulo">Acceso exclusivo para administradores</p>
+
+      <form [formGroup]="formAdmin" (ngSubmit)="loginAdmin()">
+        <div class="campo">
+          <label>Usuario</label>
+          <input type="text" formControlName="username" placeholder="admin" />
+        </div>
+        <div class="campo">
+          <label>Contraseña</label>
+          <input type="password" formControlName="password" placeholder="••••••••" />
+        </div>
+        @if (errorAdmin) {
+          <div class="error-msg">{{ errorAdmin }}</div>
+        }
+        <button type="submit" class="btn-login btn-admin" [disabled]="formAdmin.invalid || cargando">
+          {{ cargando ? 'Ingresando...' : 'Ingresar como Admin' }}
+        </button>
+      </form>
+    }
+
+    <!--<a routerLink="/" class="link-catalogo">← Volver al catálogo</a>-->
+  </div>
+</div>
