@@ -1,0 +1,31 @@
+<div class="card">
+  <img
+    [src]="producto.imagenUrl || 'assets/placeholder.png'"
+    [alt]="producto.nombre"
+    class="card-img"
+  />
+
+  <div class="card-body">
+    <h3 class="card-title">{{ producto.nombre }}</h3>
+    <p class="card-desc">{{ producto.descripcion }}</p>
+
+    <div class="card-footer">
+      <span class="precio">S/ {{ producto.precio | number:'1.2-2' }}</span>
+      <span class="stock" [class.sin-stock]="producto.stock === 0">
+        {{ producto.stock > 0 ? 'Stock: ' + producto.stock : 'Sin stock' }}
+      </span>
+    </div>
+
+    <div class="card-actions">
+      <a [routerLink]="['/producto', producto.id]" class="btn btn-outline">
+        Ver detalle
+      </a>
+      <button
+        class="btn btn-primary"
+        [disabled]="producto.stock === 0"
+        (click)="agregarAlCarrito.emit(producto)">
+        Agregar 🛒
+      </button>
+    </div>
+  </div>
+</div>

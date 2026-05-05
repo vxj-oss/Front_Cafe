@@ -1,0 +1,71 @@
+<div class="checkout-container">
+  <h1 class="titulo">Finalizar Pedido</h1>
+
+  @if (carrito.length === 0) {
+    <p class="vacio">No tienes productos en el carrito.</p>
+  } @else {
+    <div class="checkout-grid">
+
+      <!-- Formulario -->
+      <div class="formulario">
+        <h2>Datos de entrega</h2>
+
+        <form [formGroup]="form" (ngSubmit)="confirmar()">
+
+          <div class="campo">
+            <label>Nombre completo</label>
+            <input type="text" formControlName="clienteNombre" placeholder="Ej: Juan Pérez" />
+            @if (form.get('clienteNombre')?.invalid && form.get('clienteNombre')?.touched) {
+              <span class="error-msg">Ingresa tu nombre (mínimo 3 caracteres)</span>
+            }
+          </div>
+
+          <div class="campo">
+            <label>Celular</label>
+            <input type="text" formControlName="celular" placeholder="Ej: 987654321" />
+            @if (form.get('celular')?.invalid && form.get('celular')?.touched) {
+              <span class="error-msg">Ingresa un celular válido (9 dígitos)</span>
+            }
+          </div>
+
+          <div class="campo">
+            <label>Dirección de entrega</label>
+            <input type="text" formControlName="direccion" placeholder="Ej: Av. Los Pinos 123" />
+            @if (form.get('direccion')?.invalid && form.get('direccion')?.touched) {
+              <span class="error-msg">Ingresa una dirección válida</span>
+            }
+          </div>
+
+          @if (error) {
+            <div class="error-general">{{ error }}</div>
+          }
+
+          <button type="submit" class="btn-confirmar" [disabled]="form.invalid || cargando">
+            {{ cargando ? 'Registrando...' : 'Confirmar pedido' }}
+          </button>
+
+        </form>
+      </div>
+
+      <!-- Resumen -->
+      <div class="resumen">
+        <h2>Resumen del pedido</h2>
+
+        @for (item of carrito; track item.producto.id) {
+          <div class="resumen-linea">
+            <span>{{ item.producto.nombre }} x{{ item.cantidad }}</span>
+            <span>S/ {{ (item.producto.precio * item.cantidad) | number:'1.2-2' }}</span>
+          </div>
+        }
+
+        <hr />
+
+        <div class="resumen-total">
+          <strong>Total</strong>
+          <strong>S/ {{ total | number:'1.2-2' }}</strong>
+        </div>
+      </div>
+
+    </div>
+  }
+</div>

@@ -1,0 +1,74 @@
+.admin-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.titulo {
+  font-size: 1.6rem;
+  color: #3e2723;
+  margin-bottom: 1.5rem;
+}
+
+.toast {
+  background: #4caf50;
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.toast.error { background: #ef5350; }
+
+.tabla-wrapper { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+thead { background: #3e2723; color: white; }
+
+th, td {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+tbody tr:nth-child(even) { background: #fafafa; }
+tbody tr:hover { background: #efebe9; }
+
+/* Badges de estado */
+.badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.estado-pendiente      { background: #fff3e0; color: #e65100; }
+.estado-en_preparacion { background: #e3f2fd; color: #1565c0; }
+.estado-entregado      { background: #e8f5e9; color: #2e7d32; }
+
+.btn-avanzar {
+  background: #3e2723;
+  color: white;
+  border: none;
+  padding: 0.35rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.btn-avanzar:hover { background: #6d4c41; }
+
+.entregado-label {
+  color: #2e7d32;
+  font-size: 0.82rem;
+  font-weight: 600;
+}

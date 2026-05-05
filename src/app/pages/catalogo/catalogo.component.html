@@ -1,0 +1,41 @@
+<div class="catalogo-container">
+  <h1 class="titulo">Nuestros Productos</h1>
+
+  <!-- Filtros por categoría -->
+  <div class="filtros">
+    <button
+      class="filtro-btn"
+      [class.activo]="categoriaSeleccionada === null"
+      (click)="filtrarPorCategoria(null)">
+      Todos
+    </button>
+
+    @for (cat of categorias; track cat.id) {
+      <button
+        class="filtro-btn"
+        [class.activo]="categoriaSeleccionada === cat.id"
+        (click)="filtrarPorCategoria(cat.id)">
+        {{ cat.nombre }}
+      </button>
+    }
+  </div>
+
+  <!-- Mensaje toast -->
+  @if (mensaje) {
+    <div class="toast">{{ mensaje }}</div>
+  }
+
+  <!-- Grid de productos -->
+  @if (productos.length > 0) {
+    <div class="productos-grid">
+      @for (producto of productos; track producto.id) {
+        <app-product-card
+          [producto]="producto"
+          (agregarAlCarrito)="agregarAlCarrito($event)">
+        </app-product-card>
+      }
+    </div>
+  } @else {
+    <p class="sin-resultados">No hay productos disponibles en esta categoría.</p>
+  }
+</div>

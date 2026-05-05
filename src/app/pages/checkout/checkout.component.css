@@ -1,0 +1,120 @@
+.checkout-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.titulo {
+  font-size: 1.8rem;
+  color: #3e2723;
+  margin-bottom: 1.5rem;
+}
+
+.vacio {
+  text-align: center;
+  color: #757575;
+  margin-top: 3rem;
+}
+
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Formulario */
+.formulario {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.formulario h2 {
+  color: #3e2723;
+  margin: 0 0 1.5rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.campo label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #424242;
+}
+
+.campo input {
+  padding: 0.6rem 0.9rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.campo input:focus { border-color: #3e2723; }
+
+.error-msg {
+  color: #ef5350;
+  font-size: 0.8rem;
+}
+
+.error-general {
+  background: #ffebee;
+  color: #c62828;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.btn-confirmar {
+  width: 100%;
+  padding: 0.85rem;
+  background: #3e2723;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-confirmar:hover:not(:disabled) { background: #6d4c41; }
+.btn-confirmar:disabled { background: #bdbdbd; cursor: not-allowed; }
+
+/* Resumen */
+.resumen {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 1rem;
+}
+
+.resumen h2 {
+  color: #3e2723;
+  margin: 0 0 1rem;
+}
+
+.resumen-linea {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #616161;
+  margin-bottom: 0.5rem;
+}
+
+.resumen-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}

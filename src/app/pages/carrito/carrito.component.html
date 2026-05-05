@@ -1,0 +1,72 @@
+<div class="carrito-container">
+  <h1 class="titulo">🛒 Mi Carrito</h1>
+
+  @if (carritoService.carrito().length === 0) {
+    <div class="vacio">
+      <p>Tu carrito está vacío.</p>
+      <a routerLink="/" class="btn-volver">Ver catálogo</a>
+    </div>
+  } @else {
+    <div class="carrito-content">
+
+      <div class="items-lista">
+        @for (item of carritoService.carrito(); track item.producto.id) {
+          <div class="item-card">
+            <img
+              [src]="item.producto.imagenUrl || 'assets/placeholder.png'"
+              [alt]="item.producto.nombre"
+              class="item-img"
+            />
+
+            <div class="item-info">
+              <h3>{{ item.producto.nombre }}</h3>
+              <p class="item-precio">S/ {{ item.producto.precio | number:'1.2-2' }}</p>
+            </div>
+
+            <div class="item-controles">
+              <button (click)="reducir(item.producto.id)">−</button>
+              <span>{{ item.cantidad }}</span>
+              <button (click)="agregar(item.producto.id)">+</button>
+            </div>
+
+            <div class="item-subtotal">
+              S/ {{ (item.producto.precio * item.cantidad) | number:'1.2-2' }}
+            </div>
+
+            <button class="btn-eliminar" (click)="eliminar(item.producto.id)">
+              🗑
+            </button>
+          </div>
+        }
+      </div>
+
+    
+      <div class="resumen">
+        <h2>Resumen</h2>
+
+        @for (item of carritoService.carrito(); track item.producto.id) {
+          <div class="resumen-linea">
+            <span>{{ item.producto.nombre }} x{{ item.cantidad }}</span>
+            <span>S/ {{ (item.producto.precio * item.cantidad) | number:'1.2-2' }}</span>
+          </div>
+        }
+
+        <hr />
+
+        <div class="resumen-total">
+          <strong>Total</strong>
+          <strong>S/ {{ carritoService.total() | number:'1.2-2' }}</strong>
+        </div>
+
+        <a routerLink="/checkout" class="btn-checkout">
+          Proceder al checkout →
+        </a>
+
+        <button class="btn-vaciar" (click)="vaciar()">
+          Vaciar carrito
+        </button>
+      </div>
+
+    </div>
+  }
+</div>

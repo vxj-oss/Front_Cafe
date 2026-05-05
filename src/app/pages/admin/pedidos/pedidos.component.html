@@ -1,0 +1,52 @@
+<div class="admin-container">
+  <h1 class="titulo">Pedidos en Proceso</h1>
+
+  @if (mensaje) {
+    <div class="toast" [class.error]="mensaje.startsWith('❌')">{{ mensaje }}</div>
+  }
+
+  <div class="tabla-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Celular</th>
+          <th>Dirección</th>
+          <th>Fecha</th>
+          <th>Total</th>
+          <th>Estado</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (p of pedidos; track p.id) {
+          <tr>
+            <td>#{{ p.id }}</td>
+            <td>{{ p.clienteNombre }}</td>
+            <td>{{ p.celular }}</td>
+            <td>{{ p.direccion }}</td>
+            <td>{{ p.fecha | date:'dd/MM/yyyy HH:mm' }}</td>
+            <td>S/ {{ p.total | number:'1.2-2' }}</td>
+            <td>
+              <span class="badge estado-{{ p.estado?.toLowerCase() }}">
+                {{ p.estado }}
+              </span>
+            </td>
+            <td>
+              @if (estadoSiguiente(p.estado!)) {
+                <button
+                  class="btn-avanzar"
+                  (click)="cambiarEstado(p.id!, estadoSiguiente(p.estado!)!)">
+                  → {{ estadoSiguiente(p.estado!) }}
+                </button>
+              } @else {
+                <span class="entregado-label">Completado</span>
+              }
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

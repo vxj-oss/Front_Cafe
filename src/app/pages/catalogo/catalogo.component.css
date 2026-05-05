@@ -1,0 +1,56 @@
+.catalogo-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.titulo {
+  font-size: 1.8rem;
+  color: #3e2723;
+  margin-bottom: 1.5rem;
+}
+
+.filtros {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.filtro-btn {
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  border: 1px solid #3e2723;
+  background: transparent;
+  color: #3e2723;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.filtro-btn:hover,
+.filtro-btn.activo {
+  background: #3e2723;
+  color: white;
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.toast {
+  background: #4caf50;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.sin-resultados {
+  color: #757575;
+  font-size: 1rem;
+  margin-top: 2rem;
+}

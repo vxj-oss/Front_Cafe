@@ -1,0 +1,24 @@
+@if (producto) {
+  <div class="detalle-container">
+    <img [src]="producto.imagenUrl || 'assets/placeholder.png'" [alt]="producto.nombre" class="detalle-img" />
+
+    <div class="detalle-info">
+      <h1>{{ producto.nombre }}</h1>
+      <p class="descripcion">{{ producto.descripcion }}</p>
+      <p class="precio">S/ {{ producto.precio | number:'1.2-2' }}</p>
+      <p class="stock" [class.sin-stock]="producto.stock === 0">
+        {{ producto.stock > 0 ? 'Stock disponible: ' + producto.stock : 'Sin stock' }}
+      </p>
+
+      @if (mensaje) {
+        <div class="toast">{{ mensaje }}</div>
+      }
+
+      <button class="btn-agregar" [disabled]="producto.stock === 0" (click)="agregar()">
+        Agregar al carrito 🛒
+      </button>
+    </div>
+  </div>
+} @else {
+  <p class="cargando">Cargando producto...</p>
+}

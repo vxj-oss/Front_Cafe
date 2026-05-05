@@ -1,0 +1,112 @@
+<div class="admin-container">
+  <div class="admin-header">
+    <h1>Productos en Sucursal</h1>
+    <button class="btn-nuevo" (click)="abrirFormularioNuevo()">+ Nuevo producto</button>
+  </div>
+
+  @if (mensaje) {
+    <div class="toast">{{ mensaje }}</div>
+  }
+
+  <!-- Formulario modal -->
+  @if (mostrarFormulario) {
+    <div class="modal-overlay" (click)="cerrarFormulario()">
+      <div class="modal" (click)="$event.stopPropagation()">
+        <h2>{{ editandoId ? 'Editar producto' : 'Nuevo producto' }}</h2>
+
+        <form [formGroup]="form" (ngSubmit)="guardar()">
+
+          <div class="campo">
+            <label>Nombre</label>
+            <input type="text" formControlName="nombre" placeholder="Ej: Café Etiopía" />
+          </div>
+
+          <div class="campo">
+            <label>Descripción</label>
+            <textarea formControlName="descripcion" placeholder="Descripción del producto" rows="3"></textarea>
+          </div>
+
+          <div class="fila">
+            <div class="campo">
+              <label>Precio (S/)</label>
+              <input type="number" formControlName="precio" min="0" step="0.1" />
+            </div>
+            <div class="campo">
+              <label>Stock</label>
+              <input type="number" formControlName="stock" min="0" />
+            </div>
+          </div>
+
+          <div class="campo">
+            <label>URL de imagen</label>
+            <input type="text" formControlName="imagenUrl" placeholder="https://..." />
+          </div>
+
+          <div class="campo">
+            <label>Categoría</label>
+            <select formControlName="categoriaId">
+              <option [ngValue]="null" disabled>Selecciona una categoría</option>
+              @for (cat of categorias; track cat.id) {
+                <option [ngValue]="cat.id">{{ cat.nombre }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="campo-check">
+            <input type="checkbox" formControlName="activo" id="activo" />
+            <label for="activo">Producto activo</label>
+          </div>
+
+          @if (error) {
+            <div class="error-general">{{ error }}</div>
+          }
+
+          <div class="modal-acciones">
+            <button type="button" class="btn-cancelar" (click)="cerrarFormulario()">Cancelar</button>
+            <button type="submit" class="btn-guardar" [disabled]="form.invalid">
+              {{ editandoId ? 'Actualizar' : 'Crear' }}
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  }
+
+  <!-- Tabla de productos -->
+  <div class="tabla-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Categoría</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (p of productos; track p.id) {
+          <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.nombre }}</td>
+            <td>{{ nombreCategoria(p.categoriaId) }}</td>
+            <td>S/ {{ p.precio | number:'1.2-2' }}</td>
+            <td>{{ p.stock }}</td>
+            <td>
+              <span class="badge" [class.activo]="p.activo" [class.inactivo]="!p.activo">
+                {{ p.activo ? 'Activo' : 'Inactivo' }}
+              </span>
+            </td>
+            <td class="acciones">
+              <button class="btn-editar" (click)="editar(p)">Editar</button>
+              <button class="btn-eliminar" (click)="eliminar(p.id)">Desactivar</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
