@@ -26,7 +26,7 @@ export class AdminPedidosComponent implements OnInit {
 
   cargarPedidos(): void {
     this.pedidoService.listar().subscribe(data => {
-      this.pedidos = data;
+      this.pedidos = data.sort((a, b) => (a.id ?? 0) - (b.id ?? 0));
       this.cdr.detectChanges(); 
     });
   }
