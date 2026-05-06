@@ -2,25 +2,30 @@
   max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1.5rem;
+  background: #f8fafc;
 }
 
 .titulo {
   font-size: 1.6rem;
-  color: #3e2723;
+  color: #1e293b;
   margin-bottom: 1.5rem;
 }
 
 .toast {
-  background: #4caf50;
+  background: #22c55e;
   color: white;
   padding: 0.75rem 1rem;
   border-radius: 8px;
   margin-bottom: 1rem;
 }
 
-.toast.error { background: #ef5350; }
+.toast.error {
+  background: #ef4444;
+}
 
-.tabla-wrapper { overflow-x: auto; }
+.tabla-wrapper {
+  overflow-x: auto;
+}
 
 table {
   width: 100%;
@@ -28,10 +33,13 @@ table {
   background: white;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-thead { background: #3e2723; color: white; }
+thead {
+  background: #1e293b;
+  color: white;
+}
 
 th, td {
   padding: 0.85rem 1rem;
@@ -39,10 +47,14 @@ th, td {
   font-size: 0.88rem;
 }
 
-tbody tr:nth-child(even) { background: #fafafa; }
-tbody tr:hover { background: #efebe9; }
+tbody tr:nth-child(even) {
+  background: #f8fafc;
+}
 
-/* Badges de estado */
+tbody tr:hover {
+  background: #e0f2fe;
+}
+
 .badge {
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
@@ -50,12 +62,23 @@ tbody tr:hover { background: #efebe9; }
   font-weight: 600;
 }
 
-.estado-pendiente      { background: #fff3e0; color: #e65100; }
-.estado-en_preparacion { background: #e3f2fd; color: #1565c0; }
-.estado-entregado      { background: #e8f5e9; color: #2e7d32; }
+.estado-pendiente {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.estado-en_preparacion {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.estado-entregado {
+  background: #dcfce7;
+  color: #166534;
+}
 
 .btn-avanzar {
-  background: #3e2723;
+  background: #16a34a;
   color: white;
   border: none;
   padding: 0.35rem 0.9rem;
@@ -63,12 +86,15 @@ tbody tr:hover { background: #efebe9; }
   cursor: pointer;
   font-size: 0.82rem;
   white-space: nowrap;
+  transition: all 0.2s ease;
 }
 
-.btn-avanzar:hover { background: #6d4c41; }
+.btn-avanzar:hover {
+  background: #0a4921;
+}
 
 .entregado-label {
-  color: #2e7d32;
+  color: #391399;
   font-size: 0.82rem;
   font-weight: 600;
 }

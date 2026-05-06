@@ -2,63 +2,109 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #3e2723;
+  background-color: #0f172a;
   padding: 1rem 2rem;
   color: white;
 }
 
 .navbar-brand {
   font-size: 1.4rem;
-  font-weight: bold;
-  color: white;
+  font-weight: 600;
+  color: #f1f5f9;
   text-decoration: none;
 }
 
 .navbar-links {
   display: flex;
-  gap: 1.5rem;
   align-items: center;
+  gap: 2rem;
 }
 
-.navbar-links a {
-  color: #d7ccc8;
+.nav-group {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.nav-group a {
+  color: #cbd5f5;
   text-decoration: none;
   font-size: 0.95rem;
-  transition: color 0.2s;
+  transition: all 0.2s ease;
 }
 
-.navbar-links a:hover,
-.navbar-links a.active {
-  color: white;
+.nav-group a:hover,
+.nav-group a.active {
+  color: #ffffff;
+}
+
+.nav-group.right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid rgba(255,255,255,0.15);
 }
 
 .carrito-btn {
   position: relative;
-  background: #6d4c41;
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1d4ed8;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  color: white;
+  transition: all 0.2s ease;
 }
+
 
 .badge {
-  background: #ef5350;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #f43f5e;
   color: white;
   border-radius: 50%;
-  padding: 0 6px;
-  font-size: 0.75rem;
-  margin-left: 6px;
+  padding: 2px 6px;
+  font-size: 0.7rem;
 }
+
+.usuario-label {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  margin: 0 0.3rem;
+  white-space: nowrap;
+}
+
 .btn-logout {
   background: none;
-  border: 1px solid #d7ccc8;
-  color: #d7ccc8;
-  padding: 0.3rem 0.9rem;
-  border-radius: 20px;
+  border: 1px solid #64748b;
+  color: #cbd5f5;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
   cursor: pointer;
   font-size: 0.85rem;
+  transition: all 0.2s ease;
 }
 
-.btn-logout:hover { background: #6d4c41; border-color: #6d4c41; }
+.btn-logout:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  color: white;
+}
 
-.usuario-label { color: #d7ccc8; font-size: 0.85rem; }
+.link-primary {
+  background: #0a7130;
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
 
-.link-admin { color: #d7ccc8; font-size: 0.9rem; }
+.link-primary:hover {
+  background: #17a74c;
+}

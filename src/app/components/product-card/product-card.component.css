@@ -1,15 +1,16 @@
 .card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s;
+  transition: all 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
 }
 
 .card-img {
@@ -29,13 +30,13 @@
 .card-title {
   font-size: 1rem;
   font-weight: 600;
-  color: #3e2723;
+  color: #0f172a;
   margin: 0;
 }
 
 .card-desc {
   font-size: 0.85rem;
-  color: #757575;
+  color: #64748b;
   margin: 0;
   flex: 1;
 }
@@ -48,18 +49,18 @@
 
 .precio {
   font-weight: bold;
-  color: #4caf50;
-  font-size: 1.1rem;
+  color: #16a34a;
+  font-size: 1.05rem;
 }
 
 .stock {
   font-size: 0.8rem;
-  color: #757575;
+  color: #64748b;
 }
 
 .sin-stock {
-  color: #ef5350;
-  font-weight: bold;
+  color: #ef4444;
+  font-weight: 600;
 }
 
 .card-actions {
@@ -71,29 +72,35 @@
 .btn {
   flex: 1;
   padding: 0.5rem;
-  border-radius: 8px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
   font-size: 0.85rem;
   text-align: center;
   text-decoration: none;
+  transition: all 0.2s ease;
 }
 
 .btn-primary {
-  background: #3e2723;
+  background: #16a34a;
   color: white;
 }
 
 .btn-primary:disabled {
-  background: #bdbdbd;
+  background: #bbf7d0;
   cursor: not-allowed;
 }
 
-.btn-outline {
-  border: 1px solid #3e2723;
-  color: #3e2723;
-  background: transparent;
+.btn-primary:not(:disabled):hover {
+  background: #15803d;
 }
 
-.btn-primary:not(:disabled):hover { background: #6d4c41; }
-.btn-outline:hover { background: #efebe9; }
+.btn-outline {
+  border: 1px solid #cbd5f5;
+  color: #0f172a;
+  background: white;
+}
+
+.btn-outline:hover {
+  background: #f1f5f9;
+}

@@ -1,38 +1,57 @@
 <nav class="navbar">
-  <a routerLink="/" class="navbar-brand">☕ Café de Barrio</a>
+
+  <a routerLink="" class="navbar-brand">
+    🌿 Café de Barrio
+  </a>
 
   <div class="navbar-links">
+
     @if (!authService.isLoggedIn()) {
-      <a routerLink="/login" class="link-admin">BIENVENIDOS</a>
+      <a routerLink="" class="link-primary">
+        BIENVENIDO, "Tomate un Café"
+      </a>
     }
+
     @if (authService.isLoggedIn()) {
 
-    @if (authService.isUser()) {
-      <a routerLink="/">Catálogo</a>
-    }
-      @if (authService.isAdmin()) {
-        <a routerLink="/admin/productos">Productos</a>
-        <a routerLink="/admin/pedidos">Pedidos</a>
-      }
+      <div class="nav-group">
 
-      @if (authService.isUser()) {
-        <a routerLink="/carrito" class="carrito-btn">
-          🛒 Carrito
-          @if (carritoService.cantidadTotal() > 0) {
-            <span class="badge">
-              {{ carritoService.cantidadTotal() }}
-            </span>
-          }
-        </a>
-      }
-      <span class="usuario-label">
-        👤 {{ authService.usuario()?.username }}
-      </span>
+        @if (authService.isUser()) {
+          <a routerLink="/" routerLinkActive="active">Catálogo</a>
+        }
 
-      <button class="btn-logout" (click)="authService.logout()">
-        Cerrar sesión
-      </button>
+        @if (authService.isAdmin()) {
+          <a routerLink="/admin/productos" routerLinkActive="active">Productos</a>
+          <a routerLink="/admin/pedidos" routerLinkActive="active">Pedidos</a>
+        }
+
+      </div>
+
+      <div class="nav-group right">
+
+        @if (authService.isUser()) {
+          <a routerLink="/carrito" class="carrito-btn" routerLinkActive="active">
+            Carrito 🛍️
+            @if (carritoService.cantidadTotal() > 0) {
+              <span class="badge">
+                {{ carritoService.cantidadTotal() }}
+              </span>
+            }
+          </a>
+        }
+
+        <span class="usuario-label">
+          {{ authService.usuario()?.username }}
+        </span>
+
+        <button class="btn-logout" (click)="authService.logout()">
+          Salir
+        </button>
+
+      </div>
+
     }
 
   </div>
+
 </nav>

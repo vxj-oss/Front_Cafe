@@ -1,30 +1,43 @@
 .login-container {
-  min-height: 100vh;
+  min-height: calc(100vh - 70px);
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #efebe9;
+  padding: 2rem 1rem;
+  background: #f1f5f9;
 }
 
 .login-card {
   background: white;
   border-radius: 16px;
-  padding: 2.5rem;
+  padding: 2.2rem;
   width: 100%;
-  max-width: 400px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  max-width: 420px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
   text-align: center;
 }
 
-.login-logo { font-size: 3rem; margin-bottom: 0.25rem; }
-h1 { color: #3e2723; margin: 0 0 1.5rem; font-size: 1.5rem; }
-.subtitulo { color: #757575; font-size: 0.88rem; margin: 0 0 1.2rem; }
+.login-logo {
+  font-size: 2.5rem;
+  margin-bottom: 0.3rem;
+}
 
-/* Pestañas principales */
+h1 {
+  color: #1e293b;
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+}
+
+.subtitulo {
+  color: #64748b;
+  font-size: 0.85rem;
+  margin-bottom: 1.4rem;
+}
+
 .pestanas {
   display: flex;
-  border-bottom: 2px solid #e0e0e0;
-  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 1.3rem;
 }
 
 .pestana {
@@ -33,23 +46,23 @@ h1 { color: #3e2723; margin: 0 0 1.5rem; font-size: 1.5rem; }
   border: none;
   background: none;
   cursor: pointer;
-  font-size: 0.95rem;
-  color: #757575;
+  font-size: 0.9rem;
+  color: #64748b;
   border-bottom: 3px solid transparent;
   margin-bottom: -2px;
   transition: all 0.2s;
 }
 
 .pestana.activa {
-  color: #3e2723;
+  color: #1e293b;
   font-weight: 600;
-  border-bottom-color: #3e2723;
+  border-bottom-color: #1e293b;
 }
 
 .modo-switch {
   display: flex;
-  background: #f5f5f5;
-  border-radius: 8px;
+  background: #f1f5f9;
+  border-radius: 10px;
   padding: 4px;
   margin-bottom: 1.2rem;
 }
@@ -59,18 +72,18 @@ h1 { color: #3e2723; margin: 0 0 1.5rem; font-size: 1.5rem; }
   padding: 0.45rem;
   border: none;
   background: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 0.88rem;
-  color: #757575;
+  font-size: 0.85rem;
+  color: #64748b;
   transition: all 0.2s;
 }
 
 .modo-switch button.activo {
   background: white;
-  color: #3e2723;
+  color: #1e293b;
   font-weight: 600;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .campo {
@@ -78,70 +91,92 @@ h1 { color: #3e2723; margin: 0 0 1.5rem; font-size: 1.5rem; }
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
 }
 
-.campo label { font-size: 0.88rem; font-weight: 600; color: #424242; }
+.campo label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+}
 
 .campo input {
-  padding: 0.65rem 1rem;
-  border: 1px solid #e0e0e0;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid #e2e8f0;
   border-radius: 8px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   outline: none;
-  transition: border-color 0.2s;
+  transition: all 0.2s;
 }
 
-.campo input:focus { border-color: #3e2723; }
+.campo input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
 
-.error-campo { color: #ef5350; font-size: 0.78rem; }
+.error-campo {
+  color: #ef4444;
+  font-size: 0.75rem;
+}
 
-/* Mensajes */
 .error-msg {
-  background: #ffebee;
-  color: #c62828;
-  padding: 0.65rem;
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 0.6rem;
   border-radius: 8px;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   margin-bottom: 1rem;
   text-align: left;
 }
 
 .exito-msg {
-  background: #e8f5e9;
-  color: #2e7d32;
-  padding: 0.65rem;
+  background: #dcfce7;
+  color: #166534;
+  padding: 0.6rem;
   border-radius: 8px;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   margin-bottom: 1rem;
 }
 
-/* Botones */
 .btn-login {
   width: 100%;
-  padding: 0.8rem;
-  background: #3e2723;
+  padding: 0.75rem;
+  background: #16a34a;
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   cursor: pointer;
-  margin-bottom: 1rem;
-  transition: background 0.2s;
+  margin-top: 0.3rem;
+  transition: all 0.2s ease;
 }
 
-.btn-login:hover:not(:disabled) { background: #6d4c41; }
-.btn-login:disabled { background: #bdbdbd; cursor: not-allowed; }
+.btn-login:hover:not(:disabled) {
+  background: #15803d;
+  transform: translateY(-1px);
+}
 
-.btn-admin { background: #1565c0; }
-.btn-admin:hover:not(:disabled) { background: #1976d2; }
+.btn-login:disabled {
+  background: #bbf7d0;
+  cursor: not-allowed;
+}
+
+.btn-admin {
+  background: #2563eb;
+}
+
+.btn-admin:hover:not(:disabled) {
+  background: #1d4ed8;
+}
 
 .link-catalogo {
   display: block;
-  color: #757575;
-  font-size: 0.85rem;
+  color: #64748b;
+  font-size: 0.8rem;
   text-decoration: none;
-  margin-top: 0.5rem;
+  margin-top: 0.6rem;
 }
 
-.link-catalogo:hover { color: #3e2723; }
+.link-catalogo:hover {
+  color: #1e293b;
+}
