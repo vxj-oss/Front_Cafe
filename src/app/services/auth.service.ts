@@ -7,7 +7,7 @@ import { tap } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  private url = 'http://localhost:8080/api/auth';
+  private url = 'https://cafebackend-production-14cb.up.railway.app/api/auth' //'http://localhost:8080/api/auth';
   private _usuario = signal<LoginResponse | null>(null);
   readonly usuario = this._usuario.asReadonly();
 

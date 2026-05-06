@@ -6,7 +6,7 @@ import { Categoria } from '../models/categoria.model';
 @Injectable({ providedIn: 'root' })
 export class CategoriaService {
 
-  private url = 'http://localhost:8080/api/categorias';
+  private url = 'https://cafebackend-production-14cb.up.railway.app/api/categorias';//'http://localhost:8080/api/categorias';
 
   constructor(private http: HttpClient) {}
 
