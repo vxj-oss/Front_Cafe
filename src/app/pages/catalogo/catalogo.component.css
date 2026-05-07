@@ -2,12 +2,14 @@
   max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1.5rem;
+  box-sizing: border-box;
 }
 
 .titulo {
   font-size: 1.8rem;
   color: #3e2723;
   margin-bottom: 1.5rem;
+  word-break: break-word;
 }
 
 .filtros {
@@ -25,7 +27,8 @@
   color: #3e2723;
   cursor: pointer;
   font-size: 0.9rem;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .filtro-btn:hover,
@@ -53,4 +56,85 @@
   color: #757575;
   font-size: 1rem;
   margin-top: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+
+  .catalogo-container {
+    padding: 0 1rem;
+  }
+
+  .productos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.2rem;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .catalogo-container {
+    margin: 1.5rem auto;
+  }
+
+  .titulo {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  .filtros {
+    justify-content: center;
+  }
+
+  .filtro-btn {
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .productos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .toast {
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .catalogo-container {
+    padding: 0 0.7rem;
+  }
+
+  .titulo {
+    font-size: 1.3rem;
+  }
+
+  .filtros {
+    gap: 0.5rem;
+  }
+
+  .filtro-btn {
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+  }
+
+  .productos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .toast {
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .sin-resultados {
+    font-size: 0.9rem;
+  }
+
 }

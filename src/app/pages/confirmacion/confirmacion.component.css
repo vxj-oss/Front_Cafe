@@ -3,18 +3,21 @@
   justify-content: center;
   align-items: center;
   min-height: 80vh;
+  padding: 2rem 1rem;
   background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+  box-sizing: border-box;
 }
 
 .confirmacion-card {
   background: white;
   border-radius: 18px;
-  padding: 2.5rem 2.5rem;
+  padding: 2.5rem;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   max-width: 420px;
   width: 100%;
   transition: all 0.25s ease;
+  box-sizing: border-box;
 }
 
 .confirmacion-card:hover {
@@ -31,12 +34,14 @@ h1 {
   color: #0f172a;
   margin-bottom: 0.5rem;
   font-size: 1.4rem;
+  word-break: break-word;
 }
 
 p {
   color: #64748b;
   margin-bottom: 1.8rem;
   font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .btn-inicio {
@@ -53,4 +58,66 @@ p {
 .btn-inicio:hover {
   background: #15803d;
   transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+
+  .confirmacion-container {
+    padding: 1.5rem 1rem;
+    min-height: 70vh;
+  }
+
+  .confirmacion-card {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  .icono {
+    font-size: 3rem;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .btn-inicio {
+    width: 100%;
+    text-align: center;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .confirmacion-container {
+    padding: 1rem 0.7rem;
+  }
+
+  .confirmacion-card {
+    padding: 1.5rem 1rem;
+    border-radius: 14px;
+  }
+
+  .icono {
+    font-size: 2.5rem;
+  }
+
+  h1 {
+    font-size: 1.1rem;
+  }
+
+  p {
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-inicio {
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
+
 }

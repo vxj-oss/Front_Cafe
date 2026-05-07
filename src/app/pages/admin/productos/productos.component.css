@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   background: #f8fafc;
@@ -9,18 +10,22 @@ html, body {
   margin: 0 auto;
   padding: 2rem 1.5rem;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .admin-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
 .admin-header h1 {
   color: #1e293b;
   font-size: 1.6rem;
+  margin: 0;
+  word-break: break-word;
 }
 
 .btn-nuevo {
@@ -32,6 +37,7 @@ html, body {
   cursor: pointer;
   font-size: 0.95rem;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .btn-nuevo:hover {
@@ -55,6 +61,8 @@ html, body {
   justify-content: center;
   align-items: center;
   z-index: 100;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .modal {
@@ -66,11 +74,13 @@ html, body {
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  box-sizing: border-box;
 }
 
 .modal h2 {
   color: #1e293b;
   margin: 0 0 1.5rem;
+  word-break: break-word;
 }
 
 .campo {
@@ -89,12 +99,19 @@ html, body {
 .campo input,
 .campo textarea,
 .campo select {
+  width: 100%;
   padding: 0.6rem 0.9rem;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
   font-size: 0.95rem;
   outline: none;
   transition: border 0.2s;
+  box-sizing: border-box;
+}
+
+.campo textarea {
+  resize: vertical;
+  min-height: 100px;
 }
 
 .campo input:focus,
@@ -130,6 +147,7 @@ html, body {
   justify-content: flex-end;
   gap: 0.75rem;
   margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
 .btn-cancelar {
@@ -138,6 +156,11 @@ html, body {
   background: white;
   border-radius: 8px;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cancelar:hover {
+  background: #f1f5f9;
 }
 
 .btn-guardar {
@@ -147,6 +170,7 @@ html, body {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .btn-guardar:disabled {
@@ -159,11 +183,14 @@ html, body {
 }
 
 .tabla-wrapper {
+  width: 100%;
   overflow-x: auto;
+  border-radius: 12px;
 }
 
 table {
   width: 100%;
+  min-width: 750px;
   border-collapse: collapse;
   background: white;
   border-radius: 12px;
@@ -176,10 +203,12 @@ thead {
   color: white;
 }
 
-th, td {
+th,
+td {
   padding: 0.85rem 1rem;
   text-align: left;
   font-size: 0.9rem;
+  vertical-align: middle;
 }
 
 tbody tr:nth-child(even) {
@@ -191,10 +220,14 @@ tbody tr:hover {
 }
 
 .badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .activo {
@@ -210,6 +243,7 @@ tbody tr:hover {
 .acciones {
   display: flex;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .btn-editar,
@@ -220,6 +254,7 @@ tbody tr:hover {
   cursor: pointer;
   font-size: 0.82rem;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .btn-editar {
@@ -238,4 +273,105 @@ tbody tr:hover {
 
 .btn-eliminar:hover {
   background: #fecaca;
+}
+
+@media (max-width: 900px) {
+
+  .admin-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .fila {
+    grid-template-columns: 1fr;
+  }
+
+  th,
+  td {
+    font-size: 0.85rem;
+    padding: 0.75rem;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .admin-container {
+    padding: 1rem 0.8rem;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-header h1 {
+    text-align: center;
+    font-size: 1.4rem;
+  }
+
+  .btn-nuevo {
+    width: 100%;
+  }
+
+  .modal {
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .modal h2 {
+    font-size: 1.2rem;
+  }
+
+  .modal-acciones {
+    flex-direction: column;
+  }
+
+  .btn-cancelar,
+  .btn-guardar {
+    width: 100%;
+  }
+
+  table {
+    min-width: 680px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .admin-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .admin-header h1 {
+    font-size: 1.2rem;
+  }
+
+  .modal {
+    padding: 1rem;
+  }
+
+  .campo label {
+    font-size: 0.82rem;
+  }
+
+  .campo input,
+  .campo textarea,
+  .campo select {
+    font-size: 0.85rem;
+    padding: 0.55rem 0.75rem;
+  }
+
+  th,
+  td {
+    padding: 0.65rem;
+    font-size: 0.78rem;
+  }
+
+  .btn-editar,
+  .btn-eliminar {
+    width: 100%;
+    text-align: center;
+  }
+
 }
