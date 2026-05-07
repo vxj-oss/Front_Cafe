@@ -9,6 +9,7 @@
   font-size: 1.6rem;
   color: #1e293b;
   margin-bottom: 1.5rem;
+  word-break: break-word;
 }
 
 .toast {
@@ -24,11 +25,14 @@
 }
 
 .tabla-wrapper {
+  width: 100%;
   overflow-x: auto;
+  border-radius: 12px;
 }
 
 table {
   width: 100%;
+  min-width: 700px;
   border-collapse: collapse;
   background: white;
   border-radius: 12px;
@@ -41,10 +45,12 @@ thead {
   color: white;
 }
 
-th, td {
+th,
+td {
   padding: 0.85rem 1rem;
   text-align: left;
   font-size: 0.88rem;
+  vertical-align: middle;
 }
 
 tbody tr:nth-child(even) {
@@ -56,10 +62,14 @@ tbody tr:hover {
 }
 
 .badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .estado-pendiente {
@@ -97,4 +107,85 @@ tbody tr:hover {
   color: #391399;
   font-size: 0.82rem;
   font-weight: 600;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+
+  .admin-container {
+    padding: 0 1rem;
+  }
+
+  .titulo {
+    font-size: 1.4rem;
+  }
+
+  th,
+  td {
+    padding: 0.75rem;
+    font-size: 0.82rem;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .admin-container {
+    margin: 1rem auto;
+    padding: 0 0.8rem;
+  }
+
+  .titulo {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .toast {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  table {
+    min-width: 650px;
+  }
+
+  th,
+  td {
+    padding: 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .btn-avanzar {
+    width: 100%;
+    text-align: center;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .admin-container {
+    padding: 0 0.5rem;
+  }
+
+  .titulo {
+    font-size: 1.05rem;
+  }
+
+  th,
+  td {
+    padding: 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .badge {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .btn-avanzar {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.7rem;
+  }
+
 }
